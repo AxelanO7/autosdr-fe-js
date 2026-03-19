@@ -33,39 +33,39 @@ apiClient.interceptors.response.use(
   },
 );
 
-export const scrapeWebsite = async (url: string): Promise<unknown> => {
+export const scrapeWebsite = async (url: string): Promise<any> => {
   try {
     const response = await apiClient.post("/leads/scrape", { url });
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const getLeads = async (): Promise<unknown> => {
+export const getLeads = async (): Promise<any> => {
   try {
     const response = await apiClient.get("/leads");
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const generateOutreach = async (leadId: string): Promise<unknown> => {
+export const generateOutreach = async (leadId: string): Promise<any> => {
   try {
     const response = await apiClient.post("/outreach/generate", {
       lead_id: leadId,
     });
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const getOutreach = async (outreachId: string): Promise<unknown> => {
+export const getOutreach = async (outreachId: string): Promise<any> => {
   try {
     const response = await apiClient.get(`/outreach/${outreachId}`);
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }
